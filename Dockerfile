@@ -1,10 +1,7 @@
 FROM node:16-slim as node-builder
 
 COPY . ./app
-RUN cd /app
-RUN npm install
-RUN npm ci
-RUN npm run prod
+RUN cd /app && npm install && npm ci && npm run prod
 
 
 FROM php:8.1.5-apache
