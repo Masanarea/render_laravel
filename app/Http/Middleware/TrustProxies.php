@@ -12,7 +12,8 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-    protected $proxies;
+    // ロードバランサーやキャッシュサーバーを使用することを考慮して、全てのプロキシサーバーを信頼するように設定
+    protected $proxies = '*';
 
     /**
      * The headers that should be used to detect proxies.
