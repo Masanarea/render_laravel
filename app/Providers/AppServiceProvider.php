@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Routing\UrlGenerator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,8 +17,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    // Laravelアプリケーションが生成する全てのURLで、安全な HTTPS を使用するように設定(redirect, route)
+    public function boot(UrlGenerator $url)
     {
-        //
+        if (env('APP_ENV') == 'production') {
+            $url->forceScheme('https');
+        }
     }
 }
