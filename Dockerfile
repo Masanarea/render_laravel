@@ -2,7 +2,6 @@ FROM node:16-slim as node-builder
 
 COPY . ./app
 RUN cd /app
-RUN npm ci
 RUN npm run prod
 
 
